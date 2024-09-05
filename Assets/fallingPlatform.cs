@@ -21,7 +21,8 @@ public class fallingPlatform : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            animator.SetBool ("fall", true);
+            //animator.SetBool ("fall", true);
+            animator.Play("FallingPlatformDown");
         }
     }
 
@@ -29,7 +30,7 @@ public class fallingPlatform : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            animator.SetBool ("fall", false);
+            //animator.SetBool ("fall", false);
         }
     }
 }

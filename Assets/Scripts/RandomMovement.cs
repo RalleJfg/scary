@@ -27,14 +27,14 @@ public class RandomMovement : MonoBehaviour
 
     public GameObject Vision;
 
-    public SlenderExample slender;
+    //public SlenderExample slender;
     
 
 
     void Start()
     {
        
-        target = GameObject.FindGameObjectWithTag("Player");
+        
         
         SetNewDestination();
     }
@@ -42,8 +42,11 @@ public class RandomMovement : MonoBehaviour
     
     void Update()
     {
-        target = slender.ForMovementTarget;
+        //target = slender.ForMovementTarget;
         print(distance);
+        target = GameObject.FindGameObjectWithTag("Player");
+
+        //pAnimator.SetFloat("distance", distance);
 
         targetTime -= Time.deltaTime;
 
@@ -71,6 +74,12 @@ public class RandomMovement : MonoBehaviour
             pAnimator.SetBool ("run", false);
             pAnimator.SetBool ("idle", false);
             pAnimator.SetBool ("kill", true);
+
+            //pAnimator.SetFloat("distance", 2);
+            //pAnimator.Play("Z_Attack");
+
+
+
            // pAnimator.SetBool("isMoving", true);
             //pAnimator.SetFloat("moveX", (target.transform.position.x - transform.position.x));
             //pAnimator.SetFloat("moveY", (target.transform.position.y - transform.position.y));
@@ -87,6 +96,11 @@ public class RandomMovement : MonoBehaviour
             pAnimator.SetBool ("walk", false);
             pAnimator.SetBool ("run", true);
             pAnimator.SetBool ("idle", false);
+
+            //pAnimator.SetFloat("distance", 8);
+            //pAnimator.Play("Z_Run");
+
+
            // pAnimator.SetBool("isMoving", true);
             //pAnimator.SetFloat("moveX", (target.transform.position.x - transform.position.x));
             //pAnimator.SetFloat("moveY", (target.transform.position.y - transform.position.y));
@@ -104,6 +118,11 @@ public class RandomMovement : MonoBehaviour
             pAnimator.SetBool ("run", false);
             pAnimator.SetBool ("idle", false);
             pAnimator.SetBool ("kill", false);
+
+            //pAnimator.SetFloat(4f);
+            //pAnimator.SetFloat("distance", 22);
+            //pAnimator.Play("Z_Walk");
+
            // pAnimator.SetBool("isMoving", true);
             //pAnimator.SetFloat("moveX", (target.transform.position.x - transform.position.x));
             //pAnimator.SetFloat("moveY", (target.transform.position.y - transform.position.y));
