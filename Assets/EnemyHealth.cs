@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public float health = 10;
+    public Rigidbody rb;
     
 
 
@@ -31,6 +32,8 @@ public class EnemyHealth : MonoBehaviour
             print("damage");
             
             health -= 3;
+            rb.AddForce(20, 0, 0);
+
             if (health < 0)
             {
                 Destroy(gameObject);

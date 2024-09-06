@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7374237620149811225}
   - component: {fileID: 8670038009159714836}
   - component: {fileID: 7143854974867190756}
+  - component: {fileID: 1135640001532845786}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -47,7 +48,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181510177201759415}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -216,6 +217,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 5112690813622216257}
+--- !u!114 &1135640001532845786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181510177201759415}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2249364391
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &376686713470305567
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,6 +639,7 @@ GameObject:
   - component: {fileID: 4806947800504875768}
   - component: {fileID: 4060972366752640681}
   - component: {fileID: 78562256098764078}
+  - component: {fileID: 4051171891784759206}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -705,7 +728,7 @@ MonoBehaviour:
   controller: {fileID: 8132070020114564325}
   speed: 4
   isReady: 0
-  rb: {fileID: 0}
+  rb: {fileID: 4051171891784759206}
   velocity: {x: 0, y: 0, z: 0}
   groundCheck: {fileID: 714004750708524112}
   groundDistance: 0.4
@@ -897,6 +920,33 @@ MonoBehaviour:
   canAttack: 1
   AttackCooldown: 1
   animator: {fileID: 4818927552600088081}
+--- !u!54 &4051171891784759206
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3134409324853736076}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4813614029267467398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,8 +1653,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c9ea9eca6b9ee844ac36a5e8889c66e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3785725880603124685}
   m_SourcePrefab: {fileID: 100100000, guid: 3c9ea9eca6b9ee844ac36a5e8889c66e, type: 3}
+--- !u!1 &6249018405978463898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c9ea9eca6b9ee844ac36a5e8889c66e, type: 3}
+  m_PrefabInstance: {fileID: 6519401297390887883}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3785725880603124685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6249018405978463898}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2249364391
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!4 &6769800351266178080 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3c9ea9eca6b9ee844ac36a5e8889c66e, type: 3}
