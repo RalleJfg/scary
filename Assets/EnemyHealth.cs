@@ -1,0 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyHealth : MonoBehaviour
+{
+    public float health = 10;
+    
+
+
+    // Start is called before the first frame update
+    void Awake()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        //print("yes");
+
+        if (other.tag == "Sword")   //other.gameObject.tag == "Enemy"
+        {
+
+
+            print("damage");
+            
+            health -= 3;
+            if (health < 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+}

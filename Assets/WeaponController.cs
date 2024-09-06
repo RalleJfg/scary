@@ -5,17 +5,20 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 
 {
+    public static WeaponController instance;
+
     public GameObject sword;
     public bool canAttack = true;
     public float AttackCooldown = 1.0f;
     
     public Animator animator;
-    public float health = 10;
+    
+    
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        instance = this;
     }
 
     // Update is called once per frame
@@ -44,23 +47,11 @@ public class WeaponController : MonoBehaviour
 
     IEnumerator ResetAttackCooldown()
     {
+        
         yield return new WaitForSeconds(AttackCooldown);
         
         canAttack = true;
     }
 
-    public void OnCollisionEnter(Collision other)
-    {
-        //print("yes");
-
-        if (other.gameObject.tag == "Enemy")
-        {
-            print("yes");
-            health -= 3;
-            if (health < 0)
-            {
-                Destroy(other.gameObject);
-            }
-        }
-    }
+    
 }

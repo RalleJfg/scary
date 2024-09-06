@@ -10,6 +10,7 @@ TagManager:
   - slenderCamera
   - deathscreen
   - Enemy
+  - Sword
   layers:
   - Default
   - TransparentFX
