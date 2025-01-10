@@ -53,11 +53,26 @@ public class RelayScript : MonoBehaviour
     {
         _buttons.SetActive(false);
 
-        Unity.Services.Relay.Models.JoinAllocation a = await RelayService.Instance.JoinAllocationAsync(_joinInput.text);
+        try
+        {
+            if (string.IsNullOrWhiteSpace(_joinInput.text))
+            {
+                Debug.Log("No join code provided. Please enter a join code.");
+                _buttons.SetActive(true);
+                return;
+            }
 
-        _transport.SetClientRelayData(a.RelayServer.IpV4, (ushort)a.RelayServer.Port, a.AllocationIdBytes, a.Key, a.ConnectionData, a.HostConnectionData);
+            Unity.Services.Relay.Models.JoinAllocation a = await RelayService.Instance.JoinAllocationAsync(_joinInput.text);
 
-        NetworkManager.Singleton.StartClient();
+            _transport.SetClientRelayData(a.RelayServer.IpV4, (ushort)a.RelayServer.Port, a.AllocationIdBytes, a.Key, a.ConnectionData, a.HostConnectionData);
+
+            NetworkManager.Singleton.StartClient();
+        }
+        catch (RelayServiceException ex)
+        {
+            Debug.Log($"Failed to join game: {ex.Message}");
+            _buttons.SetActive(true);
+        }
     }
 
 }
