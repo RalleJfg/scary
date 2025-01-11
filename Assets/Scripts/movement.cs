@@ -42,6 +42,12 @@ public class MouseLook : NetworkBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+            if(isGrounded && velocity.y < 0)
+            {
+                velocity.y = -2f;
+            }
+
         if (gms.CanMove == false)
         {
             if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -50,11 +56,7 @@ public class MouseLook : NetworkBehaviour
             }
 
 
-            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-            if(isGrounded && velocity.y < 0)
-            {
-                velocity.y = -2f;
-            }
+            
 
             Vector3 move = transform.right * x + transform.forward * z;
 
