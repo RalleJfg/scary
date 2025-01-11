@@ -72,7 +72,7 @@ public class GMS : NetworkBehaviour
         }
         
 
-        if (Input.GetKeyDown("h") && LobbyMenu.activeInHierarchy == false)
+        if (Input.GetKeyDown("p") && LobbyMenu.activeInHierarchy == false)
         {
             if(PauseMenu.activeInHierarchy == true)
             {

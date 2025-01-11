@@ -9,6 +9,7 @@ using Unity.Services.Core;
 using Unity.Services.Authentication;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
+using UnityEngine.UI;
 
 
 public class RelayScript : MonoBehaviour
@@ -47,6 +48,14 @@ public class RelayScript : MonoBehaviour
         _transport.SetHostRelayData(a.RelayServer.IpV4, (ushort)a.RelayServer.Port, a.AllocationIdBytes, a.Key, a.ConnectionData);
 
         NetworkManager.Singleton.StartHost();
+    }
+
+    public void Copy()
+    {
+        TextEditor textEditor = new TextEditor();
+        textEditor.text = _joinCodeText.text;
+        textEditor.SelectAll();
+        textEditor.Copy();
     }
 
     public async void JoinGame()
