@@ -29,7 +29,7 @@ public class EnemyHealth : MonoBehaviour
         {
 
 
-            print("damage");
+            
             
             health -= 3;
             rb.AddForce(20, 0, 0);

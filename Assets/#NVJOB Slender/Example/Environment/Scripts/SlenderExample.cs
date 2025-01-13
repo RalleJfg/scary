@@ -69,8 +69,6 @@ public class SlenderExample : MonoBehaviour
     void Update()
     {
         
-
-
         players = GameObject.FindGameObjectsWithTag("Player");
 
         for (int i = 0; i <players.Length; i++)

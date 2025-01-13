@@ -43,7 +43,7 @@ public class RandomMovement : MonoBehaviour
     void Update()
     {
         //target = slender.ForMovementTarget;
-        print(distance);
+        
         target = GameObject.FindGameObjectWithTag("Player");
 
         //pAnimator.SetFloat("distance", distance);
