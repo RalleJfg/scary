@@ -68,7 +68,7 @@ public class SlenderExample : MonoBehaviour
 
     void Update()
     {
-        print(distance);
+        
 
 
         players = GameObject.FindGameObjectsWithTag("Player");

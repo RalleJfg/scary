@@ -6,7 +6,6 @@ using Unity.Collections;
 using TMPro;
 using Unity.Services.Authentication;
 using System;
-using Unity.Services.Authentication;
 
 using Unity.Services.Core;
 using Unity.Services.Core.Environments;
@@ -27,7 +26,7 @@ public class GMS : NetworkBehaviour
     public bool CanMove = false;
     public TMP_InputField InputField;
     public string PlayerTag;
-    public PlayerSettings pS;
+    //public PlayerSettings pS;
     public GameObject Playernames;
     public GameObject lobby;
     
@@ -51,7 +50,7 @@ public class GMS : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        pS = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSettings>();
+        //pS = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSettings>();
        // pS.user.Value = new NetString() { Uname = InputField.text };
         //pS.user.Value = new NetString("hej");
         
