@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
+    public static movement instance;
     public float mouseSens = 100f;
     public Transform playerBody;
     float xRotation = 0f;
@@ -13,16 +14,20 @@ public class movement : MonoBehaviour
     public GameObject slenderCam;
     public Camera playercam;
     public GameObject player;
-    public CharacterController controller;
+
     
-    private bool localKilled = false;
     float distance;
     float nearestDistance = 10000;
     public float timer1 = 2;
     public float timer2 = 4;
     public GameObject deathScreen;
+    public bool dead = false;
 
 
+    void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -48,7 +53,7 @@ public class movement : MonoBehaviour
             timer1 -= Time.deltaTime;
         }
 
-        if(timer1 <= 0 ) // detta blir för båda spelarna. man delar tydligen på distance så det funkar inte att && det 
+        if(timer1 <= 0  || dead) // detta blir för båda spelarna. man delar tydligen på distance så det funkar inte att && det 
         {
             deathScreen.SetActive(true);
             timer2 -= Time.deltaTime;

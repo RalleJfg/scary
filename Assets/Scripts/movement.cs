@@ -118,6 +118,11 @@ public class MouseLook : NetworkBehaviour
             isReady = true;
             readyUp.Ready();
         }
+
+        if (other.gameObject.CompareTag("Pit"))
+        {
+            movement.dead = true;
+        }
     }
     public void OnTriggerExit(Collider other) 
     {

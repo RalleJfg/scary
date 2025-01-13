@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Sword
   - CinemachineTarget
+  - Pit
   layers:
   - Default
   - TransparentFX
