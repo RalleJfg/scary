@@ -38,7 +38,10 @@ public class MouseLook : NetworkBehaviour
 
     void Update()
     {
-        
+        if (IsServer)
+        {
+            //put server code here
+        }
 
 
         readyUp = GameObject.FindGameObjectWithTag("ReadyUp").GetComponent<ReadyUp>();
