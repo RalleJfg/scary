@@ -23,12 +23,17 @@ public class MouseLook : NetworkBehaviour
     public GMS gms;
 
     
-
+    public GameObject camera;
     
     
-    void Start()
+    public override void OnNetworkSpawn()
     {
-        
+        base.OnNetworkSpawn();
+        camera.SetActive(false);
+       base.OnNetworkSpawn();
+       if (!IsOwner) { return; } // ALL players will read this method, only player owner will execute past this line
+       camera.SetActive(true); // only enable YOUR PLAYER'S camera, all others will stay disabled
+       
     }
 
     void Update()

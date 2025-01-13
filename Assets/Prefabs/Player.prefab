@@ -796,6 +796,7 @@ MonoBehaviour:
     m_Bits: 256
   readyUp: {fileID: 0}
   gms: {fileID: 0}
+  camera: {fileID: 181510177201759415}
 --- !u!114 &4806947800504875768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1246,6 +1247,7 @@ MonoBehaviour:
     m_Bits: 256
   readyUp: {fileID: 0}
   gms: {fileID: 0}
+  camera: {fileID: 0}
 --- !u!114 &7971889208329890936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1704,13 +1706,52 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1797210450780406, guid: 6c9dce45f94fc294eb0d58110cb7b041, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 361495973928280640}
   m_SourcePrefab: {fileID: 100100000, guid: 6c9dce45f94fc294eb0d58110cb7b041, type: 3}
 --- !u!1 &1022094316881174015 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1797210450780406, guid: 6c9dce45f94fc294eb0d58110cb7b041, type: 3}
   m_PrefabInstance: {fileID: 1020443341544013065}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &361495973928280640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022094316881174015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74e4ebf18c92224fb85d00310d22117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
 --- !u!4 &1025009839982460289 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4722216907014280, guid: 6c9dce45f94fc294eb0d58110cb7b041, type: 3}

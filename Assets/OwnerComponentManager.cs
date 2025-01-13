@@ -7,17 +7,30 @@ public class OwnerComponentManager : NetworkBehaviour
  
     public override void OnNetworkSpawn()
     {
+        base.OnNetworkSpawn();
         _camera.enabled = false;
        base.OnNetworkSpawn();
        if (!IsOwner) { return; } // ALL players will read this method, only player owner will execute past this line
        _camera.enabled = true; // only enable YOUR PLAYER'S camera, all others will stay disabled
+       
     }
 
-    public void Update ()
-    {
-        if(IsLocalPlayer )
-        {
-            _camera.enabled = true;
-        }
-    }
+
+
+    // public void Update ()
+    // {
+    //     if(IsOwner)
+    //     {
+    //         print("I am the owner");
+    //     }
+    //     if(IsLocalPlayer )
+    //     {
+    //         print("I am the owner");
+    //         _camera.enabled = true;
+    //     }
+    // }
+
+
+
+    
 }
