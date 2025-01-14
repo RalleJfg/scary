@@ -9,7 +9,7 @@ public class PlayerNetworkStats : NetworkBehaviour
     //public NetworkVariable<int> Rizz = new(0);
 
 
-    public NetworkVariable<float> Timer = new NetworkVariable<float>(0f);
+    //public NetworkVariable<float> Timer = new NetworkVariable<float>(0f);
     public NetworkVariable<bool> IsDead = new NetworkVariable<bool>(false);
     public string PlayerTimeMessage = new string("");
 
@@ -54,7 +54,7 @@ public class PlayerNetworkStats : NetworkBehaviour
 
     void Update()
     {
-        if (IsOwner && Input.GetKeyDown(KeyCode.K)) // Press 'T' to request the timer
+        if (/*IsOwner && */Input.GetKeyDown(KeyCode.K)) // Press 'T' to request the timer
         {
             Debug.Log("Requesting timer value from server...");
             

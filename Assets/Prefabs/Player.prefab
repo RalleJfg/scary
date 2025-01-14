@@ -1128,10 +1128,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  Rizz:
-    m_InternalValue: 0
-  Timer:
-    m_InternalValue: 0
   IsDead:
     m_InternalValue: 0
   PlayerTimeMessage: 
@@ -1150,7 +1146,6 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   playerNetworkStats: {fileID: 1772379757460600169}
   ui: {fileID: 0}
-  timerText: {fileID: 0}
   messageText: {fileID: 0}
 --- !u!1 &4813614029267467398
 GameObject:

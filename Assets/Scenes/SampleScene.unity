@@ -268,7 +268,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   playerNetworkStats: {fileID: 2841516}
   ui: {fileID: 1274558386}
-  messageText: {fileID: 1988469475}
+  messageText: {fileID: 0}
 --- !u!114 &2841516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,8 +282,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  Timer:
-    m_InternalValue: 0
   IsDead:
     m_InternalValue: 0
   PlayerTimeMessage: 
@@ -23483,6 +23481,7 @@ GameObject:
   - component: {fileID: 1988469474}
   - component: {fileID: 1988469476}
   - component: {fileID: 1988469475}
+  - component: {fileID: 1988469477}
   m_Layer: 5
   m_Name: MessageText
   m_TagString: Untagged
@@ -23551,6 +23550,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1988469473}
   m_CullTransparentMesh: 1
+--- !u!114 &1988469477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988469473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1618098431
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!1 &1993855308
 GameObject:
   m_ObjectHideFlags: 0
