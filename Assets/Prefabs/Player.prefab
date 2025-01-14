@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b0d95c546d17a94e865fa3299a5e9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   mouseSens: 200
   playerBody: {fileID: 6752500558562672007}
   gms: {fileID: 0}
@@ -396,7 +397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4281898552283374035
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1694,9 +1695,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6752500558562672007}
     m_Modifications:
+    - target: {fileID: 1564691415232738, guid: 6c9dce45f94fc294eb0d58110cb7b041, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 1797210450780406, guid: 6c9dce45f94fc294eb0d58110cb7b041, type: 3}
       propertyPath: m_Name
       value: Katana_LODA
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797210450780406, guid: 6c9dce45f94fc294eb0d58110cb7b041, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4722216907014280, guid: 6c9dce45f94fc294eb0d58110cb7b041, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1737,6 +1746,10 @@ PrefabInstance:
     - target: {fileID: 4722216907014280, guid: 6c9dce45f94fc294eb0d58110cb7b041, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201330768319520522, guid: 6c9dce45f94fc294eb0d58110cb7b041, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 1024
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

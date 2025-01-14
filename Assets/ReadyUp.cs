@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class ReadyUp : MonoBehaviour
+public class ReadyUp : NetworkBehaviour
 {
     public GMS gms;
     public int playersReady = 0;
@@ -35,7 +36,7 @@ public class ReadyUp : MonoBehaviour
         }
 
 
-        if (playersReady == playersInGame)
+        if (playersReady == playersInGame && IsOwner)
         {
             
             AllPlayersReady = true;

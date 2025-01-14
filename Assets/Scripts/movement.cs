@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 
-public class movement : MonoBehaviour
+public class movement : NetworkBehaviour
 {
     public static movement instance;
     public float mouseSens = 100f;
@@ -28,7 +29,7 @@ public class movement : MonoBehaviour
     {
         instance = this;
     }
-    void Start()
+    public void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         slender = GameObject.Find("HeadTarget").transform;
