@@ -746,6 +746,8 @@ GameObject:
   - component: {fileID: 4051171891784759206}
   - component: {fileID: 6703819646293244147}
   - component: {fileID: 7071904285203470475}
+  - component: {fileID: 1772379757460600169}
+  - component: {fileID: -8185160085296276222}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1113,6 +1115,43 @@ MonoBehaviour:
   UseRigidBodyForMotion: 0
   AutoUpdateKinematicState: 1
   AutoSetKinematicOnDespawn: 1
+--- !u!114 &1772379757460600169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3134409324853736076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b225070a034b45848ad945166cffbe92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  Rizz:
+    m_InternalValue: 0
+  Timer:
+    m_InternalValue: 0
+  IsDead:
+    m_InternalValue: 0
+  PlayerTimeMessage: 
+--- !u!114 &-8185160085296276222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3134409324853736076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f710a34777d13dd4f9680c6675594533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  playerNetworkStats: {fileID: 1772379757460600169}
+  ui: {fileID: 0}
+  timerText: {fileID: 0}
+  messageText: {fileID: 0}
 --- !u!1 &4813614029267467398
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class PlayerStatsUI : NetworkBehaviour
 {
     public PlayerNetworkStats playerNetworkStats;
     public GameObject ui;
-    public Text timerText;
+    //public Text timerText;
     public Text messageText;
 
 
@@ -18,6 +18,9 @@ public class PlayerStatsUI : NetworkBehaviour
         {
             enabled = false;
         }
+
+        //timerText = GameObject.Find("TimeText").GetComponent<Text>();
+        messageText = GameObject.Find("MessageText").GetComponent<Text>();
     }
 
 
@@ -29,7 +32,7 @@ public class PlayerStatsUI : NetworkBehaviour
         if (!IsOwner) return;
 
 
-        playerNetworkStats.PlayerTimeMessage.OnValueChanged += OnPlayerTimeMessageChanged;
+        //playerNetworkStats.PlayerTimeMessage += OnPlayerTimeMessageChanged;
     }
 
 
@@ -41,7 +44,7 @@ public class PlayerStatsUI : NetworkBehaviour
         if (!IsOwner) return;
 
 
-        playerNetworkStats.PlayerTimeMessage.OnValueChanged -= OnPlayerTimeMessageChanged;
+        //playerNetworkStats.PlayerTimeMessage -= OnPlayerTimeMessageChanged;
     }
 
 
@@ -49,14 +52,18 @@ public class PlayerStatsUI : NetworkBehaviour
     {
         if (IsOwner && !playerNetworkStats.IsDead.Value)
         {
-            timerText.text = $"Time: {playerNetworkStats.Timer.Value:F2} seconds";
+            //timerText.text = $"Time: {playerNetworkStats.Timer.Value:F2} seconds";
+        }
+        if(playerNetworkStats.IsDead.Value)
+        {
+            messageText.text = playerNetworkStats.PlayerTimeMessage; // Display the time message for the player
         }
     }
 
 
     private void OnPlayerTimeMessageChanged(string oldMessage, string newMessage)
     {
-        messageText.text = newMessage; // Display the time message for the player
+        messageText.text = playerNetworkStats.PlayerTimeMessage; // Display the time message for the player
     }
 
 
