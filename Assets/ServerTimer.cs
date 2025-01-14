@@ -20,8 +20,10 @@ public class ServerTimer : NetworkBehaviour
         {
             Timer.Value += Time.deltaTime; // Increment timer each frame on the server
             //Debug.Log($"Server Timer: {Timer.Value}");
-            timerText.text = $"Time: {Timer.Value:F2} seconds";
+            
         }
+
+        timerText.text = $"Time: {Timer.Value:F2} seconds";
     }
 
     // ServerRpc to allow clients to request the current timer value
