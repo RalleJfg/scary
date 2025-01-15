@@ -9,7 +9,7 @@ public class PlayerStatsUI : NetworkBehaviour
     public PlayerNetworkStats playerNetworkStats;
     public GameObject ui;
     //public Text timerText;
-    //public Text messageText;
+    public Text messageText;
 
 
     private void Awake()
@@ -20,7 +20,7 @@ public class PlayerStatsUI : NetworkBehaviour
         }
 
         //timerText = GameObject.Find("TimeText").GetComponent<Text>();
-        //messageText = GameObject.Find("MessageText").GetComponent<Text>();
+        messageText = GameObject.Find("MessageText").GetComponent<Text>();
     }
 
 
@@ -57,8 +57,13 @@ public class PlayerStatsUI : NetworkBehaviour
         if(playerNetworkStats.IsDead.Value)
         {
             //messageText.text = playerNetworkStats.PlayerTimeMessage; // Display the time message for the player
+
+            // Access the NetworkVariable and convert it to a string
+            string message = PlayerNetworkStats.instance.PlayerTimeMessage.Value.ToString();
+            //Debug.Log("kkkkkkkkk" + message); // Use it for UI or other purposes
+            messageText.text = message;
         }
-        //messageText.text = playerNetworkStats.PlayerTimeMessage; // Display the time message for the player
+        //messageText.text = playerNetworkStats.PlayerTimeMessage.ToString(); // Display the time message for the player
     }
 
 

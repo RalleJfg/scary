@@ -1,6 +1,7 @@
 using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.Events;
+using Unity.Collections;
 
 
 public class PlayerNetworkStats : NetworkBehaviour
@@ -11,7 +12,11 @@ public class PlayerNetworkStats : NetworkBehaviour
 
     //public NetworkVariable<float> Timer = new NetworkVariable<float>(0f);
     public NetworkVariable<bool> IsDead = new NetworkVariable<bool>(false);
-    public string PlayerTimeMessage = new string("");
+
+
+    //public string PlayerTimeMessage = new string("");
+
+    public NetworkVariable<FixedString64Bytes> PlayerTimeMessage = new NetworkVariable<FixedString64Bytes>("");
 
     private float savedTimerValue = 0f;
 
@@ -84,7 +89,14 @@ public class PlayerNetworkStats : NetworkBehaviour
         isCounting = false;
 
         // Notify all clients with this player's final time
-        PlayerTimeMessage = "Player " + ((int)OwnerClientId + 1) + " lost with time: " + savedTimerValue + "seconds";
+        //PlayerTimeMessage = "Player " + ((int)OwnerClientId + 1) + " lost with time: " + savedTimerValue + "seconds";
+
+        //string textMessage = "Player " + ((int)OwnerClientId + 1) + " lost with time: " + savedTimerValue + "seconds";
+
+        PlayerTimeMessage.Value = new FixedString64Bytes("Player " + ((int)OwnerClientId + 1) + " lost with time: " + savedTimerValue + "seconds");
+
+        // Assign the value to the NetworkVariable
+        //PlayerTimeMessage.Value = new FixedString64Bytes(textMessage);
         
         
         

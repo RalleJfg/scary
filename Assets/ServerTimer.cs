@@ -7,7 +7,7 @@ public class ServerTimer : NetworkBehaviour
     public NetworkVariable<float> Timer = new NetworkVariable<float>(0f);
 
     public Text timerText;
-    public Text messageText;
+    //public Text messageText;
     
 
     private void Awake()
@@ -15,7 +15,7 @@ public class ServerTimer : NetworkBehaviour
         instance = this;
 
         timerText = GameObject.Find("TimeText").GetComponent<Text>();
-        messageText = GameObject.Find("MessageText").GetComponent<Text>();
+        //messageText = GameObject.Find("MessageText").GetComponent<Text>();
     }
     private void Update()
     {
@@ -28,7 +28,7 @@ public class ServerTimer : NetworkBehaviour
 
         if(PlayerNetworkStats.instance.IsDead.Value)
         {
-            messageText.text = PlayerNetworkStats.instance.PlayerTimeMessage; // Display the time message for the player
+            //messageText.text = PlayerNetworkStats.instance.PlayerTimeMessage.ToString(); // Display the time message for the player
         }
 
         timerText.text = $"Time: {Timer.Value:F2} seconds";
