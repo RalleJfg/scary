@@ -59,22 +59,24 @@ public class movement : NetworkBehaviour
             deathScreen.SetActive(true);
             timer2 -= Time.deltaTime;
 
+
+            Debug.Log("Requesting timer value from server...");
+            
+            if (ServerTimer.instance != null)
+            {
+                if (ServerTimer.instance == null)
+                {
+                    Debug.LogError("ServerTimer instance is not available on the client.");
+                }
+                else
+                {
+                    ServerTimer.instance.RequestTimerServerRpc();
+                }
+            }
+
+            PlayerNetworkStats.instance.NotifyDeathServerRpc();
+
         }
-        //if(timer2 <= 0)
-        //{
-            //playercam.enabled = false;
-            //slenderCam.SetActive(true);
-        //    deathScreen.SetActive(false);
-        //    player.SetActive(false);
-
-        //    playercam.transform.parent = slender.transform;
-        //    controller.enabled = false;
-            
-            
-        //}
-        
-
-        
 
         gms = GameObject.FindGameObjectWithTag("GMS").GetComponent<GMS>();
         

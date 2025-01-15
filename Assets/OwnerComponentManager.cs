@@ -14,23 +14,4 @@ public class OwnerComponentManager : NetworkBehaviour
        _camera.enabled = true; // only enable YOUR PLAYER'S camera, all others will stay disabled
        
     }
-
-
-
-    // public void Update ()
-    // {
-    //     if(IsOwner)
-    //     {
-    //         print("I am the owner");
-    //     }
-    //     if(IsLocalPlayer )
-    //     {
-    //         print("I am the owner");
-    //         _camera.enabled = true;
-    //     }
-    // }
-
-
-
-    
 }

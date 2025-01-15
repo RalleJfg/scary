@@ -9,6 +9,8 @@ public class ServerTimer : NetworkBehaviour
     public Text timerText;
     //public Text messageText;
     
+    
+
 
     private void Awake()
     {
@@ -23,19 +25,13 @@ public class ServerTimer : NetworkBehaviour
         {
             Timer.Value += Time.deltaTime; // Increment timer each frame on the server
             
-            
-        }
-
-        if(PlayerNetworkStats.instance.IsDead.Value)
-        {
-            //messageText.text = PlayerNetworkStats.instance.PlayerTimeMessage.ToString(); // Display the time message for the player
         }
 
         timerText.text = $"Time: {Timer.Value:F2} seconds";
     }
 
-    // ServerRpc to allow clients to request the current timer value
-    [ServerRpc]
+    
+    [ServerRpc(RequireOwnership = false)]
     public void RequestTimerServerRpc(ServerRpcParams rpcParams = default)
     {
         // Send the current timer value to the requesting client
@@ -43,17 +39,12 @@ public class ServerTimer : NetworkBehaviour
         RespondTimerClientRpc(Timer.Value, rpcParams.Receive.SenderClientId);
     }
 
-    // ClientRpc to send the current timer value to the client
+    
     [ClientRpc]
     private void RespondTimerClientRpc(float timerValue, ulong clientId)
     {
-        // Check if this is the correct client receiving the value
-        if (NetworkManager.Singleton.LocalClientId == clientId)
-        {
-            Debug.Log($"Received Timer value from server: {timerValue}");
-            // Handle the timer value on the client side (e.g., update UI)
 
-            PlayerNetworkStats.instance.SaveTimer(timerValue);
-        }
+        PlayerNetworkStats.instance.SaveTimer(timerValue);
+
     }
 }

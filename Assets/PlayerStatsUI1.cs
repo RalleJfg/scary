@@ -11,6 +11,9 @@ public class PlayerStatsUI : NetworkBehaviour
     //public Text timerText;
     public Text messageText;
 
+    public string message;
+    
+
 
     private void Awake()
     {
@@ -19,8 +22,8 @@ public class PlayerStatsUI : NetworkBehaviour
             enabled = false;
         }
 
-        //timerText = GameObject.Find("TimeText").GetComponent<Text>();
         messageText = GameObject.Find("MessageText").GetComponent<Text>();
+        
     }
 
 
@@ -50,20 +53,13 @@ public class PlayerStatsUI : NetworkBehaviour
 
     private void Update()
     {
-        if (IsOwner && !playerNetworkStats.IsDead.Value)
-        {
-            //timerText.text = $"Time: {playerNetworkStats.Timer.Value:F2} seconds";
-        }
         if(playerNetworkStats.IsDead.Value)
         {
-            //messageText.text = playerNetworkStats.PlayerTimeMessage; // Display the time message for the player
-
-            // Access the NetworkVariable and convert it to a string
-            string message = PlayerNetworkStats.instance.PlayerTimeMessage.Value.ToString();
-            //Debug.Log("kkkkkkkkk" + message); // Use it for UI or other purposes
+            message = PlayerNetworkStats.instance.PlayerTimeMessage.Value.ToString();
+            
             messageText.text = message;
         }
-        //messageText.text = playerNetworkStats.PlayerTimeMessage.ToString(); // Display the time message for the player
+        
     }
 
 

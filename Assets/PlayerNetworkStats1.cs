@@ -1,7 +1,10 @@
 using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.Events;
+using System.Collections;
 using Unity.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 
 public class PlayerNetworkStats : NetworkBehaviour
@@ -21,49 +24,61 @@ public class PlayerNetworkStats : NetworkBehaviour
     private float savedTimerValue = 0f;
 
     private bool isCounting = true;
+
+    public Text joinedText;
    
 
    void Awake()
     {
         instance = this;
+
+        joinedText = GameObject.Find("JoinedText").GetComponent<Text>();
     }
 
 
-    // public override void OnNetworkSpawn() {
-    //     base.OnNetworkSpawn();
+    public override void OnNetworkSpawn()
+    {
+        if (IsServer)
+        {
+            // Broadcast a message to all clients when a new player joins
+            NotifyPlayerJoinedServerRpc(OwnerClientId);
+        }
+    }
 
+    [ServerRpc(RequireOwnership = false)]
+    private void NotifyPlayerJoinedServerRpc(ulong clientId)
+    {
+        // Notify all clients
+        NotifyPlayerJoinedClientRpc(clientId);
+    }
 
-    //     if (!IsOwner) return;
+    [ClientRpc]
+    private void NotifyPlayerJoinedClientRpc(ulong clientId)
+    {
+        // Display a message on all clients
+        //Debug.Log($"Player {((int)clientId + 1)} has joined the game!");
+        joinedText.text = $"Player {((int)clientId + 1)} has joined the game!";
 
-
-    //     if (Rizz.Value < 15)
-    //     {
-    //         Debug.Log("Rizz is too low");
-    //     }
-
-
-    //     Rizz.OnValueChanged += OnRizzValueChanged;
-    // }
-
-
-    // public override void OnNetworkDespawn()
-    // {
-    //     base.OnNetworkDespawn();
-       
-    //     if (!IsOwner) return;
-
-
-    //     Rizz.OnValueChanged -= OnRizzValueChanged;
-    // }
-
+        StartCoroutine(Delay(2f));
+    }
 
     void Update()
     {
-        if (/*IsOwner && */Input.GetKeyDown(KeyCode.K)) // Press 'T' to request the timer
+        if (Input.GetKeyDown(KeyCode.K)) // Press 'K' to request the Death
         {
             Debug.Log("Requesting timer value from server...");
             
-            ServerTimer.instance.RequestTimerServerRpc();
+            if (ServerTimer.instance != null)
+            {
+                if (ServerTimer.instance == null)
+                {
+                    Debug.LogError("ServerTimer instance is not available on the client.");
+                }
+                else
+                {
+                    ServerTimer.instance.RequestTimerServerRpc();
+                }
+            }
 
             NotifyDeathServerRpc();
         }
@@ -76,46 +91,25 @@ public class PlayerNetworkStats : NetworkBehaviour
     public void SaveTimer(float timerValue)
     {
         savedTimerValue = timerValue;
-        Debug.Log($"Timer saved: {savedTimerValue} seconds");
-        // You can now use this value (e.g., display it in the UI, save it to a file, etc.)
+        
     }
 
 
-    [ServerRpc]
-    private void NotifyDeathServerRpc()
+    [ServerRpc(RequireOwnership = false)]
+    public void NotifyDeathServerRpc()
     {
+        PlayerTimeMessage.Value = new FixedString64Bytes("Player " + ((int)OwnerClientId + 1) + " lost with time: " + savedTimerValue + "seconds");
+
         
         IsDead.Value = true;
         isCounting = false;
-
-        // Notify all clients with this player's final time
-        //PlayerTimeMessage = "Player " + ((int)OwnerClientId + 1) + " lost with time: " + savedTimerValue + "seconds";
-
-        //string textMessage = "Player " + ((int)OwnerClientId + 1) + " lost with time: " + savedTimerValue + "seconds";
-
-        PlayerTimeMessage.Value = new FixedString64Bytes("Player " + ((int)OwnerClientId + 1) + " lost with time: " + savedTimerValue + "seconds");
-
-        // Assign the value to the NetworkVariable
-        //PlayerTimeMessage.Value = new FixedString64Bytes(textMessage);
-        
-        
         
     }
 
-
-    // // === REFERENCE CODE ===
-    // UnityAction DoSomethingAction;
-    // System.Action Action;
-
-
-    // void CallInvoke() {
-    //     DoSomethingAction?.Invoke();
-    // }
-
-
-    // void SubscribeToCall() {
-    //     DoSomethingAction += () => {};
-    // }
-
+    private IEnumerator Delay(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        joinedText.text = "";
+    }
 
 }
