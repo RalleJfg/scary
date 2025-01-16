@@ -79,8 +79,11 @@ public class PlayerNetworkStats : NetworkBehaviour
                     ServerTimer.instance.RequestTimerServerRpc();
                 }
             }
-
+            
+            
             NotifyDeathServerRpc();
+            
+            
         }
 
 
@@ -95,10 +98,10 @@ public class PlayerNetworkStats : NetworkBehaviour
     }
 
 
-    [ServerRpc(RequireOwnership = false)]
+    [ServerRpc(RequireOwnership = false)] 
     public void NotifyDeathServerRpc()
     {
-        PlayerTimeMessage.Value = new FixedString64Bytes("Player " + ((int)OwnerClientId + 1) + " lost with time: " + savedTimerValue + "seconds");
+        PlayerTimeMessage.Value = new FixedString64Bytes("Player died with time: " + savedTimerValue + "seconds");
 
         
         IsDead.Value = true;
